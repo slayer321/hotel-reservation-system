@@ -1,0 +1,35 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- Banner -->
+	<section class="tm-banner">
+		<!-- Flexslider -->
+		<div class="flexslider flexslider-banner">
+		  <ul class="slides">
+		    <li>
+				<img src="{% static 'img/banner-1.jpg' %}" alt="Image" />	
+		    </li>
+		    <li>
+		      <img src="{% static 'img/banner-2.jpg' %}" alt="Image" />
+		    </li>
+		    <li>
+		      <img src="{% static 'img/banner-3.jpg' %}" alt="Image" />
+		    </li>
+		  </ul>
+		</div>	
+	</section>
+
+	<section class="m-5">
+		{% include "home/form.html" %}
+	</section>
+
+    <section class="m-5">
+        <div class="carosuel">
+            <h5>Oda Numarası: {{data.odaNumarasi}} | Kapasite: {{data.kapasite}} |Kategori: {{data.kategori.kategoriAd}}</h3> 
+            
+        </div>
+    </section>
+
+
+{% endblock %}

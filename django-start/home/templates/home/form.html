@@ -1,0 +1,10 @@
+<form  method="POST">
+    {% csrf_token %}
+     {{ customerform.as_p }}
+     {% comment %} here is the problem I don't know how to solve I create two seperate form for this problem {% endcomment %}
+     {{ adressform.as_p }}
+     <button class="btn btn-primary" type="submit" >Submit</button>
+</form>
+   
+
+

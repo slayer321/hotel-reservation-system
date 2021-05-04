@@ -1,0 +1,62 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+	<!-- Banner -->
+	<section class="tm-banner">
+		<!-- Flexslider -->
+		<div class="flexslider flexslider-banner">
+		  <ul class="slides">
+		    <li>
+			    <div class="tm-banner-inner">
+					<h1 class="tm-banner-title">Oteller arasında <span class="tm-yellow-text">en iyiyi</span> bulun</h1>
+					<p class="tm-banner-subtitle">Tatiliniz için</p>
+					<a href="#more" class="tm-banner-link">Daha fazla bilgi</a>	
+				</div>
+				<img src="{% static 'img/banner-1.jpg' %}" alt="Image" />	
+		    </li>
+		    <li>
+			    <div class="tm-banner-inner">
+					<h1 class="tm-banner-title">Lorem <span class="tm-yellow-text">Ipsum</span> Dolor</h1>
+					<p class="tm-banner-subtitle">Wonderful Destinations</p>
+					<a href="#more" class="tm-banner-link">Learn More</a>	
+				</div>
+		      <img src="{% static 'img/banner-2.jpg' %}" alt="Image" />
+		    </li>
+		    <li>
+			    <div class="tm-banner-inner">
+					<h1 class="tm-banner-title">Proin <span class="tm-yellow-text">Gravida</span> Nibhvell</h1>
+					<p class="tm-banner-subtitle">Velit Auctor</p>
+					<a href="#more" class="tm-banner-link">Learn More</a>	
+				</div>
+		      <img src="{% static 'img/banner-3.jpg' %}" alt="Image" />
+		    </li>
+		  </ul>
+		</div>	
+	</section>
+
+<section class="m-5">
+	
+	  
+
+<div class="row mb-5 ml-5">
+	{% for room in Rooms %}
+	<div class="col-4 mb-5">
+		<div class="card" style="width: 18rem;">
+  			<img src="https://images.etstur.com/files/images/hotelImages/integration/TR/50395/l/jr1n3llh1cr4cgmdptra.jpg" class="card-img-top" >
+  			<div class="card-body">
+				<h5 class="card-title">Room Category: {{room.category.categoryName}} </h5>
+				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				<a href="{% url 'home:room_detail' room.roomNumber %}">Room Detail</a>
+  			</div>
+		</div>
+	</div>
+	{% endfor %}
+	
+</div>
+
+
+</section>
+	
+
+{% endblock content %}

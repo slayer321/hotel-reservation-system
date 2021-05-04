@@ -1,0 +1,41 @@
+
+.kutucuk{
+    border-radius: 6px;
+    border-color: white;
+    background-color: white;
+    font-size: 85%;
+    width: 88%;
+    height: 40px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.KartBaslik{
+font-size: 20px;
+font-weight: 700;
+text-shadow: 1px 1px #000000;
+color: white;
+}
+
+.indirimkontrol {
+    color:#00FF00;
+    font-weight: 700;
+    text-shadow: 1px 1px #000000;
+}
+
+#MusteriCard{
+
+margin-top: 5px;
+margin-bottom: 5px;
+height: 500px;
+    
+border-radius: 15px;
+    
+padding-bottom: 10px;
+padding-top: 10px;
+background: rgb(255,58,146);
+background: linear-gradient(90deg, rgba(255,58,146,1) 0%, rgba(189,0,84,1) 100%);
+}
+
+
+

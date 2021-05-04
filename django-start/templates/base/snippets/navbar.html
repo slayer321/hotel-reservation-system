@@ -1,0 +1,24 @@
+{% load static %}
+<!-- Header -->
+    <div class="tm-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-4 col-sm-3 tm-site-name-container">
+                    <a href="#" class="tm-site-name">Hilton Otel</a>	
+                </div>
+                <div class="col-lg-6 col-md-8 col-sm-9">
+                    <div class="mobile-menu-icon">
+                    <i class="fa fa-bars"></i>
+                  </div>
+                    <nav class="tm-nav">
+                      <ul>
+                          <li><a href="{% url 'home:home2' %}" class="active">Anasayfa</a></li>
+                          <li><a href="{% url 'home:about' %}">Hakkımızda</a></li>
+                          
+                          <li><a href="{% url 'contact:contact' %}">İletişim</a></li>
+                      </ul>
+                  </nav>		
+                </div>				
+            </div>
+        </div>	  	
+    </div>
