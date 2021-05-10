@@ -1,49 +1,43 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .forms import CustomerForm,AdressForm
 from django.http import HttpResponse
-from .models import Room
+from .models import *
+
 def home(request):
     Rooms = Room.objects.all()
     context = {'Rooms':Rooms}
     return render(request,'home/index.html',context)
 
-def rezervasyon(request):
-    data=request.data.get('adsoyad')
-    print(data)
-    return HttpResponse('Başarılı')
+def reservation(request):
+    if request.method == 'POST':
+        # customer
+        customer_name = request.POST['customer_name']
+        customer_last_name = request.POST['customer_last_name']
+        identity_number = request.POST['identity_number']
+        phone_number = request.POST['phone_number']
+        birth_date = request.POST['birth_date']
+        # adress
+        country = request.POST['country']
+        city = request.POST['city']
+        neighborhood = request.POST['neighborhood']
+        street = request.POST['street']
+        post_code = request.POST['post_code']
+        apt_number = request.POST['apt_number']
+        door_number = request.POST['door_number']
+        # Bill
+        entry_date =request.POST['entry_date']
+        exit_date =request.POST['exit_date']
+        # data save
+        adressdata = Adress.objects.create(country=country,city=city,postcode=post_code,neighboorhood=neighborhood,street=street,aptNumber=apt_number,doorNumber=door_number)
+        customer = Customer.objects.create(customerName=customer_name,customerLastName=customer_last_name,customerIdentityNumber=identity_number,customerPhoneNumber=phone_number,customerBirthDate=birth_date,adress=adressdata)
+        # model objects
+        return redirect('home:reservation')
+    else:
+        return redirect('home:home1')
 
 def room_detail(request,roomnum):
-    if request.method == 'POST': # If the form has been submitted...
-        customerform = CustomerForm(request.POST) # A form bound to the POST data
-        adressform = AdressForm(request.POST)
-        print(musteriform)
-        print(adresform)
-        if customerform.is_valid() and adressform.is_valid(): # All validation rules pass
-            print("Valid worked")
-            customerform.save()
-            adressform.save()
-            return HttpResponseRedirect('/thanks/') # Redirect after POST
-    else:
-        customerform = CustomerForm() # A form bound to the POST data
-        adressform = AdressForm()
-    return render(request,'home/roomdetail.html',{'customerform': customerform,'adressform':adressform})
-
-
-# def rezervasyon(request):
-#      # if this is a POST request we need to process the form data
-#     if request.method == 'POST':
-#         # create a form instance and populate it with data from the request:
-        
-#         # check whether it's valid:
-#         if form.is_valid():
-#             # process the data in form.cleaned_data as required
-#             # ...
-#             # redirect to a new URL:
-#             return HttpResponseRedirect('/thanks/')
-
-#     # if a GET (or any other method) we'll create a blank form
-#     else:
-#         form = NameForm()
+    odabilgim = Room.objects.filter(roomNumber=roomnum)
+    return render(request,'home/roomdetail.html',{'odabilgim': odabilgim})
 
 
 def about(request):
